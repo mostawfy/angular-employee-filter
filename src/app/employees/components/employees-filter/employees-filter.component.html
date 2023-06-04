@@ -1,0 +1,68 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title> <mat-icon>filter_list</mat-icon>Filter</mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="row">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="filtersForm.name" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Department</mat-label>
+      <mat-select [(ngModel)]="filtersForm.department">
+        <mat-option *ngFor="let option of departmentOptions" [value]="option">{{
+          option
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Employment Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [(ngModel)]="filtersForm.employmentDate"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Salary</mat-label>
+      <input
+        matInput
+        type="number"
+        min="1000"
+        [(ngModel)]="filtersForm.salary"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Experience</mat-label>
+      <mat-select [(ngModel)]="filtersForm.experience">
+        <mat-option *ngFor="let option of experienceOptions" [value]="option">{{
+          option
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <mat-action-row align="end">
+    <button
+      mat-flat-button
+      color="accent"
+      (click)="applyFilters()"
+      [disabled]="
+        !(
+          this.filtersForm.name ||
+          this.filtersForm.department ||
+          this.filtersForm.employmentDate ||
+          this.filtersForm.salary ||
+          this.filtersForm.experience
+        )
+      "
+    >
+      Apply
+    </button>
+    <button mat-button (click)="clearFilter()">Clear</button>
+  </mat-action-row>
+</mat-expansion-panel>

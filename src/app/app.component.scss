@@ -1,0 +1,23 @@
+:host {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  mat-sidenav-container {
+    flex: 1;
+
+    .mat-drawer {
+      background: transparent;
+
+      .mat-icon {
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+
+      .menu-item-text {
+        font-size: 18px;
+        padding-top: 3px;
+      }
+    }
+  }
+}

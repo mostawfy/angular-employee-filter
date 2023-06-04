@@ -1,0 +1,18 @@
+.container {
+  padding: 2rem;
+  overflow-x: hidden;
+
+  .action-buttons {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  mat-card {
+    font-weight: 600;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,74 @@
+<h3 mat-dialog-title>Add Employee</h3>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+      <mat-error *ngIf="name?.hasError('required')">required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Department</mat-label>
+      <mat-select formControlName="department" required>
+        <mat-option *ngFor="let option of departmentOptions" [value]="option">{{
+          option
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="department?.hasError('required')"
+        >required Field</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Employment Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="employmentDate"
+        required
+      />
+      <mat-error *ngIf="employmentDate?.hasError('required')"
+        >required Field</mat-error
+      >
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Salary</mat-label>
+      <input
+        matInput
+        type="number"
+        min="1000"
+        formControlName="salary"
+        required
+      />
+      <mat-error *ngIf="salary?.hasError('required')">required Field</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Experience</mat-label>
+      <mat-select formControlName="experience" required>
+        <mat-option *ngFor="let option of experienceOptions" [value]="option">{{
+          option
+        }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="experience?.hasError('required')"
+        >required Field</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="form.invalid || loading"
+    >
+      Add
+      <mat-icon *ngIf="loading"
+        ><mat-spinner diameter="20"> </mat-spinner
+      ></mat-icon>
+    </button>
+    <button mat-button [mat-dialog-close]>Cancel</button>
+  </div>
+</form>
