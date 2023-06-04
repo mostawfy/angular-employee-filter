@@ -36,8 +36,6 @@ export class EmployeesFilterComponent implements OnInit {
     let queryParamsFilters = new Object();
     for (const [key, value] of Object.entries(this.filtersForm)) {
       if (value) {
-        if (key == 'employmentDate')
-          queryParamsFilters[key] = value.format('YYYY-MM-DD');
         queryParamsFilters[key] = value;
       }
     }
